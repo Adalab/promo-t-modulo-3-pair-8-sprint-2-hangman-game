@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Dummy from './Dummy';
 import Form from './Form';
+import Render from './Render.js';
 // api
 import getWordFromApi from '../../services/api';
 
@@ -75,14 +76,10 @@ function Main() {
   return (
     <main className='main'>
       <section>
-        <div className='solution'>
-          <h2 className='title'>Solución:</h2>
-          <ul className='letters'>{renderSolutionLetters()}</ul>
-        </div>
-        <div className='error'>
-          <h2 className='title'>Letras falladas:</h2>
-          <ul className='letters'>{renderErrorLetters()}</ul>
-        </div>
+        <Render
+          renderSolutionLetters={renderSolutionLetters}
+          renderErrorLetters={renderErrorLetters}
+        />
         <Form
           lastLetter={lastLetter}
           handleSubmit={handleSubmit}
