@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Dummy from './Dummy';
-
+import Form from './Form';
 // api
 import getWordFromApi from '../../services/api';
 
@@ -34,20 +34,17 @@ function Main() {
   };
 
   const getNumberOfErrors = () => {
-    const errorLetters = userLetters.filter(
-      (letter) => word.includes(letter) === false
-    );
+    const errorLetters = userLetters.filter((letter) => word.includes(letter) === false);
     return errorLetters.length;
   };
 
   const renderErrorLetters = () => {
     const errorLetters = userLetters.filter(
-      (letter) =>
-        word.toLocaleLowerCase().includes(letter.toLocaleLowerCase()) === false
+      (letter) => word.toLocaleLowerCase().includes(letter.toLocaleLowerCase()) === false
     );
     return errorLetters.map((letter, index) => {
       return (
-        <li key={index} className="letter">
+        <li key={index} className='letter'>
           {letter}
         </li>
       );
@@ -69,40 +66,29 @@ function Main() {
     return wordLetters.map((letter, index) => {
       const exists = userLetters.includes(letter.toLocaleLowerCase());
       return (
-        <li key={index} className="letter">
+        <li key={index} className='letter'>
           {exists ? letter : ''}
         </li>
       );
     });
   };
   return (
-    <main className="main">
+    <main className='main'>
       <section>
-        <div className="solution">
-          <h2 className="title">Solución:</h2>
-          <ul className="letters">{renderSolutionLetters()}</ul>
+        <div className='solution'>
+          <h2 className='title'>Solución:</h2>
+          <ul className='letters'>{renderSolutionLetters()}</ul>
         </div>
-        <div className="error">
-          <h2 className="title">Letras falladas:</h2>
-          <ul className="letters">{renderErrorLetters()}</ul>
+        <div className='error'>
+          <h2 className='title'>Letras falladas:</h2>
+          <ul className='letters'>{renderErrorLetters()}</ul>
         </div>
-        <form className="form" onSubmit={handleSubmit}>
-          <label className="title" htmlFor="last-letter">
-            Escribe una letra:
-          </label>
-          <input
-            autoFocus
-            autoComplete="off"
-            className="form__input"
-            maxLength="1"
-            type="text"
-            name="last-letter"
-            id="last-letter"
-            value={lastLetter}
-            onKeyDown={handleKeyDown}
-            onChange={handleChange}
-          />
-        </form>
+        <Form
+          lastLetter={lastLetter}
+          handleSubmit={handleSubmit}
+          handleKeyDown={handleKeyDown}
+          handleChange={handleChange}
+        />
       </section>
       <Dummy getNumberOfErrors={getNumberOfErrors} />
     </main>
