@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Dummy from './Dummy';
 import Form from './Form';
-import Render from './Render.js';
+import SolutionLetters from './SolutionLetters.js';
 // api
 import getWordFromApi from '../../services/api';
 
@@ -76,7 +76,7 @@ function Main() {
   return (
     <main className='main'>
       <section>
-        <Render
+        <SolutionLetters
           renderSolutionLetters={renderSolutionLetters}
           renderErrorLetters={renderErrorLetters}
         />

@@ -1,4 +1,4 @@
-function Render({ renderErrorLetters, renderSolutionLetters }) {
+function SolutionLetters({ renderErrorLetters, renderSolutionLetters }) {
   return (
     <>
       <div className='solution'>
@@ -13,4 +13,4 @@ function Render({ renderErrorLetters, renderSolutionLetters }) {
   );
 }
 
-export default Render;
+export default SolutionLetters;
