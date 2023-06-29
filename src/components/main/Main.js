@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Dummy from './Dummy';
 import Form from './Form';
+
 import SolutionLetters from './SolutionLetters.js';
 // api
 import getWordFromApi from '../../services/api';
@@ -35,17 +36,20 @@ function Main() {
   };
 
   const getNumberOfErrors = () => {
-    const errorLetters = userLetters.filter((letter) => word.includes(letter) === false);
+    const errorLetters = userLetters.filter(
+      (letter) => word.includes(letter) === false
+    );
     return errorLetters.length;
   };
 
   const renderErrorLetters = () => {
     const errorLetters = userLetters.filter(
-      (letter) => word.toLocaleLowerCase().includes(letter.toLocaleLowerCase()) === false
+      (letter) =>
+        word.toLocaleLowerCase().includes(letter.toLocaleLowerCase()) === false
     );
     return errorLetters.map((letter, index) => {
       return (
-        <li key={index} className='letter'>
+        <li key={index} className="letter">
           {letter}
         </li>
       );
@@ -67,14 +71,14 @@ function Main() {
     return wordLetters.map((letter, index) => {
       const exists = userLetters.includes(letter.toLocaleLowerCase());
       return (
-        <li key={index} className='letter'>
+        <li key={index} className="letter">
           {exists ? letter : ''}
         </li>
       );
     });
   };
   return (
-    <main className='main'>
+    <main className="main">
       <section>
         <SolutionLetters
           renderSolutionLetters={renderSolutionLetters}
